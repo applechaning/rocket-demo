@@ -24,10 +24,16 @@ spec:
           env:
           - name: MONGO_URL
             value: {{ template "rocket-demo.mongodb.fullname" . }}
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: {{ .Values.service.internalPort }}
+          - name: INSTANCE_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.service.internalPort }}
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
           # readinessProbe:
           #   httpGet:
           #     path: /

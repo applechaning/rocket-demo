@@ -17,6 +17,5 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 
 
 {{- define "rocket-demo.mongodb.fullname" -}}
-{{- $name := default .Chart.Name .Values.nameOverride -}}
-{{- printf "mongodb://%s-%s:27017/rocketchat" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
+{{- printf "mongodb://%s-%s:27017/rocketchat" .Release.Name "mongodb" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}

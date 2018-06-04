@@ -1,0 +1,9 @@
+category:
+- web-app
+questions:
+- variable: ingress.enabled
+  default: "true"
+  description: "Enable ingress"
+  type: boolean
+  required: true
+  label: Enable ingress
